@@ -1,24 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
+import React , {useState,useEffect} from 'react';
 import './App.css';
-
+import Header from "./Layouts/Header"
+import CategoryPills from './components/CategoryPills';
+import {categories, videos} from "./data/data"
+import VideoGridItem from './components/VideoGridItem';
+import { Button } from './components/Button';
 function App() {
+  const [selectCateg, setSelectCateg] = useState(categories[0])
+  useEffect(() => { 
+  }, [selectCateg])
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+       <Header/>
+       <div className="grid grid-cols-[auto,1fr] flex-grow-1 overflow-auto">
+        <div>Sidebar</div>
+        <div className="overflow-x-hidden px-6 pb-4"> 
+            <div className="sticky top-0 z-10 pb-4">
+        <CategoryPills categories={categories} selectedCategory={selectCateg} onSelect={setSelectCateg}/>
+        </div> 
+        <div className="flex flex-wrap gap-4">
+          {videos.map(video => (
+            <div key={video.id} className="flex-auto w-[300px]  ">
+             <VideoGridItem {...video}/>
+           </div>
+  ))}
+</div>
+        </div>
+       </div>
+     
+     
     </div>
   );
 }
