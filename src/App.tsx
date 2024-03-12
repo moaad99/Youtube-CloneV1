@@ -4,7 +4,8 @@ import Header from "./Layouts/Header"
 import CategoryPills from './components/CategoryPills';
 import {categories, videos} from "./data/data"
 import VideoGridItem from './components/VideoGridItem';
-import { Button } from './components/Button';
+import  Button  from './components/Button';
+import SideBar from './Layouts/SideBar';
 function App() {
   const [selectCateg, setSelectCateg] = useState(categories[0])
   useEffect(() => { 
@@ -14,7 +15,7 @@ function App() {
     <div className="App">
        <Header/>
        <div className="grid grid-cols-[auto,1fr] flex-grow-1 overflow-auto">
-        <div>Sidebar</div>
+       <SideBar/>
         <div className="overflow-x-hidden px-6 pb-4"> 
             <div className="sticky top-0 z-10 pb-4">
         <CategoryPills categories={categories} selectedCategory={selectCateg} onSelect={setSelectCateg}/>

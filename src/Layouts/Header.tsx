@@ -1,7 +1,7 @@
 import React from 'react'
 import logo from "../Assets/youtube-logo.png"
 import {Bell, Menu,Mic,Search,Upload, User} from "lucide-react"
-import { Button } from '../components/Button'
+import  Button  from '../components/Button'
 export default function Header() {
     const [showFullWidthSearch, setShowFullWidthSearch] = React.useState(false)
   return (
